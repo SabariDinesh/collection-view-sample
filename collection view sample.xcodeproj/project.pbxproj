@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C361C83271ED6B4004EACDD /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C361C82271ED6B4004EACDD /* ThemeProtocol.swift */; };
+		5C361C83271ED6B4004EACDD /* ThemeProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C361C82271ED6B4004EACDD /* ThemeProperties.swift */; };
 		5C799B4B271D608E003A8893 /* vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C799B4A271D608E003A8893 /* vc.swift */; };
 		5C86F2D7271911D200520FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86F2D6271911D200520FFC /* AppDelegate.swift */; };
 		5C86F2D9271911D200520FFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86F2D8271911D200520FFC /* SceneDelegate.swift */; };
@@ -23,7 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4C227DCA4E52721D279A1FCE /* Pods_collection_view_sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_view_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C361C82271ED6B4004EACDD /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		5C361C82271ED6B4004EACDD /* ThemeProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProperties.swift; sourceTree = "<group>"; };
 		5C799B4A271D608E003A8893 /* vc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vc.swift; sourceTree = "<group>"; };
 		5C86F2D3271911D200520FFC /* collection view sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "collection view sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C86F2D6271911D200520FFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +67,6 @@
 				F75ECA1F1C65867A78793F81 /* Pods-collection view sample.debug.xcconfig */,
 				C77EFA4EA622B1C38A395A34 /* Pods-collection view sample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,7 +118,7 @@
 		5CD9C68A27207CD2005B8FAC /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				5C361C82271ED6B4004EACDD /* ThemeProtocol.swift */,
+				5C361C82271ED6B4004EACDD /* ThemeProperties.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -243,7 +242,7 @@
 				5C86F2DB271911D200520FFC /* ViewController.swift in Sources */,
 				5C86F2D7271911D200520FFC /* AppDelegate.swift in Sources */,
 				5C86F2E1271911D200520FFC /* collection_view_sample.xcdatamodeld in Sources */,
-				5C361C83271ED6B4004EACDD /* ThemeProtocol.swift in Sources */,
+				5C361C83271ED6B4004EACDD /* ThemeProperties.swift in Sources */,
 				5C799B4B271D608E003A8893 /* vc.swift in Sources */,
 				5CAE1405271A6624009EE0BD /* DataFormat.swift in Sources */,
 				5C86F2EF27191ADD00520FFC /* CellConfiguration.swift in Sources */,

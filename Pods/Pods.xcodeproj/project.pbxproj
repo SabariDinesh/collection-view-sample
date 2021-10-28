@@ -45,13 +45,13 @@
 		7428520E0637C6324649CB337C044339 /* Themes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Themes-umbrella.h"; sourceTree = "<group>"; };
 		7483DD842E068CB35FB2D223115D6DD8 /* Pods-collection view sample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-collection view sample-Info.plist"; sourceTree = "<group>"; };
 		75FC7733D672B4DA75B69D38FD3CB98B /* Themes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Themes.release.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D98C0C67350701C54C5DB362E865817 /* Themes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Themes.debug.xcconfig; sourceTree = "<group>"; };
 		A76F842019555DC629E5784DF4DDDC86 /* Notification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Sources/Notification.swift; sourceTree = "<group>"; };
 		C759BF66C203F577F7C829C1ACAA41E6 /* Pods-collection view sample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-collection view sample-dummy.m"; sourceTree = "<group>"; };
-		CA189FE21F39424FD1022BE50C600402 /* Themes */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Themes; path = Themes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA189FE21F39424FD1022BE50C600402 /* Themes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Themes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE309849849695A5E0D580D6AFD81E0 /* Pods-collection view sample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-collection view sample.modulemap"; sourceTree = "<group>"; };
-		D71EF5AE31B63CC2769C4B2A981476C9 /* Pods-collection view sample */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-collection view sample"; path = Pods_collection_view_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D71EF5AE31B63CC2769C4B2A981476C9 /* Pods_collection_view_sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection_view_sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95B0F57435D6426862B0C239D4F202B /* Themes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Themes-Info.plist"; sourceTree = "<group>"; };
 		DDB6AA196330B1A3AFDE345CDF3270BA /* Pods-collection view sample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-collection view sample-acknowledgements.plist"; sourceTree = "<group>"; };
 		EDC6584382A6E47E6EF0829DE4240423 /* Pods-collection view sample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-collection view sample-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 				F81C607F2D5EA2DA7BD3EEDAA2BB36C2 /* ThemeUser.swift */,
 				DDA6AC72E573A4A9A757B77575C1468E /* Support Files */,
 			);
-			name = Themes;
 			path = Themes;
 			sourceTree = "<group>";
 		};
@@ -128,8 +127,8 @@
 		950C4768ED6BDE3C3A919A8FF2B68C30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D71EF5AE31B63CC2769C4B2A981476C9 /* Pods-collection view sample */,
-				CA189FE21F39424FD1022BE50C600402 /* Themes */,
+				D71EF5AE31B63CC2769C4B2A981476C9 /* Pods_collection_view_sample.framework */,
+				CA189FE21F39424FD1022BE50C600402 /* Themes.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,7 +213,7 @@
 			);
 			name = "Pods-collection view sample";
 			productName = Pods_collection_view_sample;
-			productReference = D71EF5AE31B63CC2769C4B2A981476C9 /* Pods-collection view sample */;
+			productReference = D71EF5AE31B63CC2769C4B2A981476C9 /* Pods_collection_view_sample.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7965DE9B94078E1F94DD6DB7E23F0621 /* Themes */ = {
@@ -232,7 +231,7 @@
 			);
 			name = Themes;
 			productName = Themes;
-			productReference = CA189FE21F39424FD1022BE50C600402 /* Themes */;
+			productReference = CA189FE21F39424FD1022BE50C600402 /* Themes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -242,7 +241,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					7965DE9B94078E1F94DD6DB7E23F0621 = {
+						LastSwiftMigration = 1300;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -329,7 +333,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-collection view sample/Pods-collection view sample-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,7 +431,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-collection view sample/Pods-collection view sample-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -464,7 +468,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Themes/Themes-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Themes/Themes-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -476,6 +480,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -498,7 +503,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Themes/Themes-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Themes/Themes-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,6 +515,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -569,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

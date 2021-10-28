@@ -25,7 +25,6 @@ class ViewController: UIViewController{
     override func loadView(){
         super.loadView()
         checkForTheme()
-        //applyTheme()
         addSpecifications()
         addSubViews()
         settingDelegates()
@@ -37,10 +36,7 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         page = 1
         getApiResponse(iterator: page)
-        
-        //myCollectionView.reloadData()
         }
-    
     
     func checkForTheme(){
         if UserDefaults.standard.object(forKey: "LightTheme") != nil {
@@ -50,6 +46,9 @@ class ViewController: UIViewController{
                         switchButton.setOn(false, animated: false)
                     }
             }
+        else{
+            switchButton.setOn(true, animated: true)
+        }
         
         
     }
@@ -65,7 +64,7 @@ class ViewController: UIViewController{
         //specifications
         myCollectionView = UICollectionView(frame: .zero, collectionViewLayout: ViewController.createLayout())
         myCollectionView?.register(CellConfiguration.self, forCellWithReuseIdentifier: CellConfiguration.identifier)
-        //view.backgroundColor = ThemeManager.shared.currentTheme.background
+        
         use(ThemeProperties.self){
             $0.view.backgroundColor = $1.background
             $0.myCollectionView?.backgroundColor = $1.background
@@ -83,13 +82,13 @@ class ViewController: UIViewController{
         switchButton.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
         upcomingFilter.setTitle("UPCOMING", for: .normal)
         upcomingFilter.titleLabel?.font = .boldSystemFont(ofSize: 12)
-        
+       
     }
     
     func addActions(){
         //actions
         switchButton.addTarget(self, action: #selector(switchFunc), for: .valueChanged)
-        upcomingFilter.addTarget(self, action: #selector(langFunc), for: .touchUpInside)
+        upcomingFilter.addTarget(self, action: #selector(upcomingFunc), for: .touchUpInside)
     }
     func applyConstraints(){
         switchButton.translatesAutoresizingMaskIntoConstraints = false
@@ -101,9 +100,9 @@ class ViewController: UIViewController{
         
         //common constraints
         commonConstraints = [
-            upcomingFilter.widthAnchor.constraint(equalToConstant: 90),
-            upcomingFilter.heightAnchor.constraint(equalToConstant: 50),
-            upcomingFilter.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            upcomingFilter.widthAnchor.constraint(equalToConstant: 80),
+            upcomingFilter.heightAnchor.constraint(equalToConstant: 40),
+            upcomingFilter.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             upcomingFilter.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10),
 
             searchBar.heightAnchor.constraint(equalToConstant: 50),
@@ -124,8 +123,6 @@ class ViewController: UIViewController{
             appTitle.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 3),
             appTitle.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor , constant: 10),
             appTitle.rightAnchor.constraint(equalTo: switchButton.leftAnchor,constant: -10)
-            
-            
         ]
         NSLayoutConstraint.activate(commonConstraints)
     }
@@ -181,7 +178,7 @@ class ViewController: UIViewController{
         UserDefaults.standard.set(sender.isOn, forKey: "LightTheme")
     }
         
-    @objc func langFunc(sender: UIButton){
+    @objc func upcomingFunc(sender: UIButton){
         upcomingButtonTapped = !upcomingButtonTapped
         if upcomingButtonTapped{
             movieArray = []
@@ -189,6 +186,9 @@ class ViewController: UIViewController{
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
                 self.getApiResponse(iterator: self.page)
                 self.myCollectionView?.reloadData()
+                self.appTitle.text = "showing upcoming movies"
+                self.appTitle.font = .italicSystemFont(ofSize: 15)
+                self.appTitle.textAlignment = .center
             }
             myCollectionView?.reloadData()
        }else{
@@ -197,8 +197,12 @@ class ViewController: UIViewController{
             page = 1
             DispatchQueue.main.asyncAfter(deadline: .now()+3) {
                 self.getApiResponse(iterator: self.page)
+                self.myCollectionView?.reloadData()
+                self.appTitle.text = "showing popular movies"
+                self.appTitle.font = .italicSystemFont(ofSize: 15)
+                self.appTitle.textAlignment = .center
             }
-           myCollectionView?.reloadData()
+           
         }
     }
     
@@ -365,7 +369,6 @@ extension ViewController{
                     }
                 }
                 catch{
-                    print(error)
                 }
             }
         }
@@ -415,7 +418,6 @@ extension ViewController{
                 
                 }
                 catch{
-                    print(error)
                 }
             }
         }
@@ -429,6 +431,7 @@ extension ViewController: UISearchBarDelegate{
         searchBar.resignFirstResponder()
         if let text = searchBar.text {
             queryText = text
+            self.appTitle.text = "showing search results"
             searchButtonTapped = true
             upcomingButtonTapped = false
             movieArray = []
@@ -438,6 +441,9 @@ extension ViewController: UISearchBarDelegate{
         }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        appTitle.text = "showing popular movies"
+        appTitle.font = .italicSystemFont(ofSize: 15)
+        appTitle.textAlignment = .center
         searchBar.showsCancelButton = false
         queryText = ""
         movieArray = []

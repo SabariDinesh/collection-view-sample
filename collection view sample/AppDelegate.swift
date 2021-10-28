@@ -10,7 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //if any user default option is available we are going to access that theme
         if UserDefaults.standard.object(forKey: "LightTheme") != nil {
             ThemeManager.shared.currentTheme = UserDefaults.standard.bool(forKey: "LightTheme") ? LightTheme :DarkTheme
-
+        }
+        else{
+            ThemeManager.shared.currentTheme = LightTheme
+            
         }
         
         
