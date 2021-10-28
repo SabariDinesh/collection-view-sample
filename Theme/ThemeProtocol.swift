@@ -6,38 +6,18 @@
 //
 
 import UIKit
+import Themes
 
-protocol ThemeProtocol {
-    var background: UIColor {get}
-    var text: UIColor {get}
-    var cell: UIColor {get}
-    var switchColor: UIColor{get}
-    var searchBar: UIColor{get}
-    var titleColor: UIColor{get}
-    var vc: UIColor{get}
+struct ThemeProperties: Theme {
+    var background: UIColor
+    var text: UIColor
+    var cell: UIColor
+    var switchColor: UIColor
+    var searchBar: UIColor
+    var titleColor: UIColor
+    var vc: UIColor
 }
+let LightTheme = ThemeProperties(background: UIColor(named: "white")!, text: UIColor(named: "black")!, cell: UIColor(named: "blue")!, switchColor: UIColor(named: "sblue")!, searchBar: UIColor(named: "white")!, titleColor: UIColor(named: "dark grey")!, vc: UIColor(named: "vcLight")!)
 
-class LightTheme: ThemeProtocol{
-    var vc: UIColor = UIColor(named: "vcLight")!
-    var background: UIColor = UIColor(named: "white")!
-    var text: UIColor = UIColor(named: "black")!
-    var cell: UIColor = UIColor(named: "blue")!
-    var switchColor = UIColor(named:"sblue")!
-    var searchBar = UIColor(named: "white")!
-    var titleColor: UIColor = UIColor(named: "dark grey")!
-}
+let DarkTheme = ThemeProperties(background: UIColor(named: "grey")!, text: UIColor(named: "white")!, cell: UIColor(named: "dark grey")!, switchColor: UIColor(named: "yellow")!, searchBar: UIColor(named: "white")!, titleColor: UIColor(named: "light grey")!, vc: UIColor(named: "vcDark")!)
 
-class DarkTheme: ThemeProtocol{
-    var vc: UIColor = UIColor(named: "vcDark")!
-    var switchColor: UIColor = UIColor(named: "yellow")!
-    var searchBar: UIColor = UIColor(named: "white")!
-    var background: UIColor = UIColor(named: "grey")!
-    var text: UIColor = UIColor(named: "white")!
-    var cell: UIColor = UIColor(named: "dark grey")!
-    var titleColor: UIColor = UIColor(named: "light grey")!
-    
-}
-
-class Theme{
-    static var current: ThemeProtocol = LightTheme()
-}

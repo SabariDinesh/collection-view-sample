@@ -1,18 +1,18 @@
 import UIKit
 import CoreData
+import Themes
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //if any user default option is available we are going to access that theme
         if UserDefaults.standard.object(forKey: "LightTheme") != nil {
-            Theme.current = UserDefaults.standard.bool(forKey: "LightTheme") ? LightTheme() : DarkTheme()
-            
+            ThemeManager.shared.currentTheme = UserDefaults.standard.bool(forKey: "LightTheme") ? LightTheme :DarkTheme
+
         }
+        
         
         return true
     }

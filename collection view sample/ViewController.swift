@@ -1,20 +1,22 @@
 import UIKit
+import Themes
 
 class ViewController: UIViewController{
  
-    var myCollectionView: UICollectionView?
-
-    var upcomingFilter = UIButton()
+    //visual elements variables
     var searchBar = UISearchBar()
+    var upcomingFilter = UIButton()
     var appTitle = UILabel()
     var switchButton = UISwitch()
+    var myCollectionView: UICollectionView?
+    
+    //other variables
     var movieArray: [Movie] = []
     var upcomingButtonTapped = false
     var searchButtonTapped = false
     var vcImage: UIImageView = UIImageView()
     var page = 0
     var currentCount = 0
-    //constraints array
     var commonConstraints : [NSLayoutConstraint] = []
     var queryText = ""
     var cell_id = 0
@@ -23,6 +25,7 @@ class ViewController: UIViewController{
     override func loadView(){
         super.loadView()
         checkForTheme()
+        //applyTheme()
         addSpecifications()
         addSubViews()
         settingDelegates()
@@ -47,9 +50,10 @@ class ViewController: UIViewController{
                         switchButton.setOn(false, animated: false)
                     }
             }
+        
+        
     }
     func addSubViews(){
-//        view.addSubview(myCollectionView)
         view.addSubview(myCollectionView!)
         view.addSubview(searchBar)
         view.addSubview(appTitle)
@@ -61,19 +65,25 @@ class ViewController: UIViewController{
         //specifications
         myCollectionView = UICollectionView(frame: .zero, collectionViewLayout: ViewController.createLayout())
         myCollectionView?.register(CellConfiguration.self, forCellWithReuseIdentifier: CellConfiguration.identifier)
-        view.backgroundColor = Theme.current.background
+        //view.backgroundColor = ThemeManager.shared.currentTheme.background
+        use(ThemeProperties.self){
+            $0.view.backgroundColor = $1.background
+            $0.myCollectionView?.backgroundColor = $1.background
+            $0.appTitle.textColor = $1.titleColor
+            $0.upcomingFilter.setTitleColor($1.switchColor, for: .normal)
+        }
         searchBar.layer.cornerRadius = 10
         searchBar.barStyle = .default
         searchBar.placeholder = " search"
-        myCollectionView?.backgroundColor = Theme.current.background
+        
         appTitle.text = "MOVIE DB".localized()
         appTitle.font = .boldSystemFont(ofSize: 17)
         appTitle.textAlignment = .center
-        appTitle.textColor = Theme.current.titleColor
+        
         switchButton.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
         upcomingFilter.setTitle("UPCOMING", for: .normal)
         upcomingFilter.titleLabel?.font = .boldSystemFont(ofSize: 12)
-        upcomingFilter.setTitleColor(Theme.current.switchColor, for: .normal)
+        
     }
     
     func addActions(){
@@ -121,12 +131,15 @@ class ViewController: UIViewController{
     }
     
     func applyTheme(){
-        view.backgroundColor = Theme.current.background
-        searchBar.backgroundColor = Theme.current.searchBar
-        myCollectionView?.backgroundColor = Theme.current.background
-        appTitle.textColor = Theme.current.titleColor
-        upcomingFilter.setTitleColor(Theme.current.switchColor, for: .normal)
-        myCollectionView?.reloadData()
+
+        use(ThemeProperties.self){
+            $0.view.backgroundColor = $1.background
+            $0.myCollectionView?.backgroundColor = $1.background
+            $0.appTitle.textColor = $1.titleColor
+            $0.upcomingFilter.setTitleColor($1.switchColor, for: .normal)
+            $0.myCollectionView?.reloadData()
+        }
+
     }
     
     func settingDelegates(){
@@ -158,11 +171,11 @@ class ViewController: UIViewController{
     
     @objc func switchFunc( sender: UISwitch){
         if sender.isOn{
-            Theme.current = LightTheme()
+            ThemeManager.shared.currentTheme = LightTheme
             applyTheme()
         }
         else{
-            Theme.current = DarkTheme()
+            ThemeManager.shared.currentTheme = DarkTheme
             applyTheme()
         }
         UserDefaults.standard.set(sender.isOn, forKey: "LightTheme")
@@ -235,8 +248,7 @@ extension ViewController: UICollectionViewDelegate{
             title = thisMovie?.original_title ?? "no title"
             
             if thisMovie?.backdrop_path != nil{
-                vcImage.backgroundColor = Theme.current.background
-                vcImage.image = UIImage(named: "image")
+                
                 //download task
                 DispatchQueue.main.async {
                     if thisMovie?.poster_path != nil{
@@ -247,20 +259,8 @@ extension ViewController: UICollectionViewDelegate{
 
             
         }
-        vcImage = vc.vcImage
-        vc.view.addSubview(self.vcImage)
-        vcImage.frame = vc.view.bounds
         
-        let label = UILabel()
-        
-        label.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
-        label.center = vc.view.center
-        vc.view.addSubview(label)
-        label.backgroundColor = Theme.current.vc
-        label.text = "\(title.uppercased()) \n \n \(description)"
-        label.textColor = Theme.current.text
-        label.textAlignment = .center
-        label.numberOfLines = 0
+        vc.label.text = "\(title.uppercased()) \n \n \(description)"
         present(navigationVc, animated: true)
     }
 }
@@ -274,53 +274,7 @@ extension ViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellConfiguration.identifier, for: indexPath) as! CellConfiguration
         
-        var constraintsArray: [NSLayoutConstraint] = []
-        //var landscapeConstraints: [NSLayoutConstraint] = []
-        
-        cell.layer.cornerRadius = 2
-        cell.addSubview(cell.movieImage)
-        cell.addSubview(cell.originalLanguage)
-        cell.addSubview(cell.titleLable)
-        cell.titleLable.font = .boldSystemFont(ofSize: 12)
-        cell.addSubview(cell.voteAverage)
-        cell.voteAverage.font = .italicSystemFont(ofSize: 10)
-        cell.originalLanguage.font = .italicSystemFont(ofSize: 10)
-        
-        //movie image constraints
-        cell.movieImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        constraintsArray = [
-            cell.movieImage.topAnchor.constraint(equalTo: cell.topAnchor, constant: 15),
-            cell.movieImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor , constant: -15),
-            cell.movieImage.rightAnchor.constraint(equalTo: cell.rightAnchor,constant: -15),
-            cell.movieImage.widthAnchor.constraint(equalTo: cell.movieImage.heightAnchor),
-            cell.movieImage.centerYAnchor.constraint(equalTo: cell.centerYAnchor)
-        ]
-        
-        //labels constraints
-        var previous: UILabel?
-        for label in [cell.titleLable, cell.originalLanguage, cell.voteAverage]{
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.widthAnchor.constraint(equalToConstant: 130).isActive = true
-            label.heightAnchor.constraint(equalToConstant: 20).isActive = true
-            label.textColor = Theme.current.text
-            label.textAlignment = .center
-            
-            
-            if let previous = previous {
-                label.centerYAnchor.constraint(equalTo: previous.bottomAnchor, constant: 6).isActive = true
-
-            }
-            else{
-                label.centerYAnchor.constraint(equalTo: cell.centerYAnchor, constant: -20).isActive = true
-            }
-            label.centerXAnchor.constraint(equalTo: cell.centerXAnchor , constant: -70).isActive = true
-            //label.bottomAnchor.constraint(equalTo: label.topAnchor , constant: 50).isActive = true
-
-            previous = label
-        }
-        NSLayoutConstraint.activate(constraintsArray)
-        
+       
         
         let thisMovie: Movie?
         
@@ -332,7 +286,6 @@ extension ViewController: UICollectionViewDataSource{
             cell.setVote(with: thisMovie?.vote_average! ?? 0.0)
             cell.setLanguage(with: thisMovie?.original_language! ?? "no language")
             cell.movieImage.image =  UIImage(named: "image")
-            cell.backgroundColor = Theme.current.cell
             cell_id = (thisMovie?.id)!
             
             if thisMovie?.poster_path != nil{
