@@ -12,8 +12,7 @@ class vc: UIViewController  {
 
     var vcImage = UIImageView()
     let label = UILabel()
-    
-    
+
     @objc func tappedButton(){
         dismiss(animated: true, completion: nil)
     }
@@ -31,11 +30,14 @@ class vc: UIViewController  {
         view.addSubview(vcImage)
         view.sendSubviewToBack(vcImage)
     }
+    
     func navBarSpec(){
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.backgroundColor: UIColor.white]
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(tappedButton))
         title = "Description"
+        navigationController?.navigationBar.backgroundColor = .white
     }
+    
     func addSpec(){
         label.frame = CGRect(x: 0, y: 0, width: 250, height: 250)
         label.center = view.center

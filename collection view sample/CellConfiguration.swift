@@ -105,7 +105,6 @@ class CellConfiguration: UICollectionViewCell{
         titleLable.text = title
     }
     
-    
     //identifier of the cell
     static let identifier = "CellConfiguration"
     
@@ -144,7 +143,6 @@ class CellConfiguration: UICollectionViewCell{
             }
         }
         downloadTask.resume()
-        
     }
 }
 

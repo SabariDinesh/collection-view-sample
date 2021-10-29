@@ -90,13 +90,13 @@ class ViewController: UIViewController{
         switchButton.addTarget(self, action: #selector(switchFunc), for: .valueChanged)
         upcomingFilter.addTarget(self, action: #selector(upcomingFunc), for: .touchUpInside)
     }
+    
     func applyConstraints(){
         switchButton.translatesAutoresizingMaskIntoConstraints = false
         myCollectionView?.translatesAutoresizingMaskIntoConstraints = false
         appTitle.translatesAutoresizingMaskIntoConstraints = false
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         upcomingFilter.translatesAutoresizingMaskIntoConstraints = false
-        
         
         //common constraints
         commonConstraints = [
@@ -128,15 +128,13 @@ class ViewController: UIViewController{
     }
     
     func applyTheme(){
-
-        use(ThemeProperties.self){
+       use(ThemeProperties.self){
             $0.view.backgroundColor = $1.background
             $0.myCollectionView?.backgroundColor = $1.background
             $0.appTitle.textColor = $1.titleColor
             $0.upcomingFilter.setTitleColor($1.switchColor, for: .normal)
             $0.myCollectionView?.reloadData()
         }
-
     }
     
     func settingDelegates(){
@@ -150,7 +148,6 @@ class ViewController: UIViewController{
         //item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
 
-
         item.contentInsets = NSDirectionalEdgeInsets (top: 2, leading: 2, bottom: 2, trailing: 2)
 
         //group
@@ -158,7 +155,6 @@ class ViewController: UIViewController{
 
         //section
         let section = NSCollectionLayoutSection(group: group)
-
 
         //return
         return UICollectionViewCompositionalLayout(section: section)
@@ -373,7 +369,6 @@ extension ViewController{
             }
         }
         dataTask.resume()
-        myCollectionView?.reloadData()
     }
     
     func getApiResponse(with query: String ,iterator: Int) {

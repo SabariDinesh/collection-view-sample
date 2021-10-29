@@ -13,10 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else{
             ThemeManager.shared.currentTheme = LightTheme
-            
         }
-        
-        
         return true
     }
 
